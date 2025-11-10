@@ -1,0 +1,333 @@
+{
+    "title": "Recording 9/30/2025 at 4:16:39 PM",
+    "steps": [
+        {
+            "type": "setViewport",
+            "width": 1736,
+            "height": 1196,
+            "deviceScaleFactor": 1,
+            "isMobile": false,
+            "hasTouch": false,
+            "isLandscape": false
+        },
+        {
+            "type": "navigate",
+            "url": "https://dttools.app/projects",
+            "assertedEvents": [
+                {
+                    "type": "navigation",
+                    "url": "https://dttools.app/projects",
+                    "title": "DTTools - Design Thinking Tools"
+                }
+            ]
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Projetos[role=\"button\"]"
+                ],
+                [
+                    "[data-testid='nav-projects']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"nav-projects\"]"
+                ],
+                [
+                    "pierce/[data-testid='nav-projects']"
+                ]
+            ],
+            "offsetY": 10,
+            "offsetX": 56.984375
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "div:nth-of-type(2) div.pt-0 > div > div:nth-of-type(1)"
+                ],
+                [
+                    "xpath///*[@data-testid=\"card-project-c36d763f-f154-428c-b6a3-a43215138349\"]/div[2]/div/div[1]"
+                ],
+                [
+                    "pierce/div:nth-of-type(2) div.pt-0 > div > div:nth-of-type(1)"
+                ]
+            ],
+            "offsetY": 23,
+            "offsetX": 243
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "[data-testid='card-phase-1'] div.flex-1 > div.font-semibold"
+                ],
+                [
+                    "xpath///*[@data-testid=\"card-phase-1\"]/div[1]/div/div[2]/div[1]"
+                ],
+                [
+                    "pierce/[data-testid='card-phase-1'] div.flex-1 > div.font-semibold"
+                ]
+            ],
+            "offsetY": 23,
+            "offsetX": 308
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Entrevistas",
+                    "aria/[role=\"image\"]"
+                ],
+                [
+                    "[data-testid='tab-interviews'] > svg"
+                ],
+                [
+                    "xpath///*[@data-testid=\"tab-interviews\"]/svg"
+                ],
+                [
+                    "pierce/[data-testid='tab-interviews'] > svg"
+                ]
+            ],
+            "offsetY": 19,
+            "offsetX": 1.25
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "div.text-center > [data-testid='button-create-interview']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"button-create-interview\"]"
+                ],
+                [
+                    "pierce/div.text-center > [data-testid='button-create-interview']"
+                ]
+            ],
+            "offsetY": 16,
+            "offsetX": 90.5234375
+        },
+        {
+            "type": "change",
+            "value": "Juliana",
+            "selectors": [
+                [
+                    "aria/Nome do Participante *"
+                ],
+                [
+                    "[data-testid='input-participant-name']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"input-participant-name\"]"
+                ],
+                [
+                    "pierce/[data-testid='input-participant-name']"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "keyDown",
+            "target": "main",
+            "key": "Tab"
+        },
+        {
+            "type": "keyUp",
+            "key": "Tab",
+            "target": "main"
+        },
+        {
+            "type": "change",
+            "value": "48",
+            "selectors": [
+                [
+                    "aria/Duração (minutos)"
+                ],
+                [
+                    "[data-testid='input-duration']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"input-duration\"]"
+                ],
+                [
+                    "pierce/[data-testid='input-duration']"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Data da Entrevista *"
+                ],
+                [
+                    "[data-testid='input-interview-date']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"input-interview-date\"]"
+                ],
+                [
+                    "pierce/[data-testid='input-interview-date']"
+                ],
+                [
+                    "text/2025-09-30"
+                ]
+            ],
+            "offsetY": 22,
+            "offsetX": 67
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Data da Entrevista *"
+                ],
+                [
+                    "[data-testid='input-interview-date']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"input-interview-date\"]"
+                ],
+                [
+                    "pierce/[data-testid='input-interview-date']"
+                ],
+                [
+                    "text/2025-09-30"
+                ]
+            ],
+            "offsetY": 18,
+            "offsetX": 127
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Digite a pergunta..."
+                ],
+                [
+                    "[data-testid='input-question-0']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"input-question-0\"]"
+                ],
+                [
+                    "pierce/[data-testid='input-question-0']"
+                ]
+            ],
+            "offsetY": 31,
+            "offsetX": 35
+        },
+        {
+            "type": "change",
+            "value": "R",
+            "selectors": [
+                [
+                    "aria/Digite a pergunta..."
+                ],
+                [
+                    "[data-testid='input-question-0']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"input-question-0\"]"
+                ],
+                [
+                    "pierce/[data-testid='input-question-0']"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "keyUp",
+            "key": "r",
+            "target": "main"
+        },
+        {
+            "type": "change",
+            "value": "Responde?",
+            "selectors": [
+                [
+                    "aria/Digite a pergunta..."
+                ],
+                [
+                    "[data-testid='input-question-0']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"input-question-0\"]"
+                ],
+                [
+                    "pierce/[data-testid='input-question-0']"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Digite a resposta (opcional)..."
+                ],
+                [
+                    "[data-testid='input-response-0']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"input-response-0\"]"
+                ],
+                [
+                    "pierce/[data-testid='input-response-0']"
+                ]
+            ],
+            "offsetY": 57,
+            "offsetX": 30
+        },
+        {
+            "type": "change",
+            "value": "Sim",
+            "selectors": [
+                [
+                    "aria/Digite a resposta (opcional)..."
+                ],
+                [
+                    "[data-testid='input-response-0']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"input-response-0\"]"
+                ],
+                [
+                    "pierce/[data-testid='input-response-0']"
+                ]
+            ],
+            "target": "main"
+        },
+        {
+            "type": "click",
+            "target": "main",
+            "selectors": [
+                [
+                    "aria/Criar Entrevista[role=\"button\"]"
+                ],
+                [
+                    "[data-testid='button-submit']"
+                ],
+                [
+                    "xpath///*[@data-testid=\"button-submit\"]"
+                ],
+                [
+                    "pierce/[data-testid='button-submit']"
+                ]
+            ],
+            "offsetY": 11,
+            "offsetX": 65.0390625
+        }
+    ]
+}

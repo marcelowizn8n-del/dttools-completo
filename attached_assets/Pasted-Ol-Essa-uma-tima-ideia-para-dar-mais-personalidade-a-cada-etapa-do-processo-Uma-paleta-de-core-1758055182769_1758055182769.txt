@@ -1,0 +1,39 @@
+Olá! Essa é uma ótima ideia para dar mais personalidade a cada etapa do processo. Uma paleta de cores que representa bem o fluxo do Design Thinking pode ajudar a guiar o usuário visualmente.
+
+Aqui estão algumas sugestões de cores para cada fase, com a justificativa para cada escolha e a cor para o efeito de "mouse over".
+
+---
+
+### Sugestão de Paleta de Cores para o Design Thinking
+
+#### 1. Empathize (Empatia)
+* **Cor principal:** Um **azul claro e suave** para transmitir a ideia de calma, confiança e clareza, que são essenciais para entender as necessidades dos usuários.
+    * Exemplo: `#90C5E0`
+* **Mouse over:** Um azul ligeiramente mais escuro e sóbrio para manter a sensação de tranquilidade.
+    * Exemplo: `#69A1C5`
+
+#### 2. Define (Definição)
+* **Cor principal:** Um **azul escuro ou marinho** para representar estabilidade, foco e a clareza de definir o problema. É uma cor que passa seriedade e profundidade.
+    * Exemplo: `#3A5A7E`
+* **Mouse over:** Um azul marinho ainda mais escuro.
+    * Exemplo: `#2A4259`
+
+#### 3. Ideate (Idear)
+* **Cor principal:** Um **amarelo vibrante** que lembra a luz de uma lâmpada acesa, simbolizando a criatividade, a energia e o "momento de inspiração" das novas ideias.
+    * Exemplo: `#FFD700`
+* **Mouse over:** Um amarelo-ouro, um pouco mais escuro e rico.
+    * Exemplo: `#E6C200`
+
+#### 4. Prototype (Protótipo)
+* **Cor principal:** Um **laranja** que evoca ação, energia e a construção de algo físico ou tangível. É uma cor que liga a criatividade do "Ideate" com a execução.
+    * Exemplo: `#FF8C42`
+* **Mouse over:** Um laranja queimado, que dá uma sensação de solidez.
+    * Exemplo: `#E0773A`
+
+#### 5. Test (Teste)
+* **Cor principal:** Um **verde claro** que representa crescimento, sucesso e validação. É a cor do "certo", do "sim" e do feedback positivo.
+    * Exemplo: `#76D7C4`
+* **Mouse over:** Um verde um pouco mais escuro, como um verde-água ou verde musgo, que ainda mantém a sensação de "ok" e resultado.
+    * Exemplo: `#48A9A6`
+
+Essa sequência de cores segue uma lógica visual, começando com tons mais calmos, passando por cores vibrantes e terminando com uma cor que representa a validação do trabalho.

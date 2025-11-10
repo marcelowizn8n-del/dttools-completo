@@ -1,0 +1,21 @@
+{
+  "name": "DTTools - Design Thinking Tools",
+  "short_name": "DTTools",
+  "description": "Plataforma completa de ferramentas para Design Thinking com metodologia das 5 fases: Empatizar, Definir, Idear, Prototipar e Testar.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pt-BR",
+  "categories": ["productivity", "business", "education"],
+  "icons": [
+    {
+      "src": "/logo-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

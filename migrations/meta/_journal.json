@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1758324224011,
+      "tag": "0000_add_canvas_drawing_support",
+      "breakpoints": true
+    }
+  ]
+}
