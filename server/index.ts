@@ -8,6 +8,11 @@ import { initializeDefaultData } from "./storage";
 import { execSync } from "child_process";
 import fs from "fs/promises";
 import path from "path";
+import { fileURLToPath } from "url";
+
+// Compatible way to get __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Build version v8.0.0-AUTO-SYNC - Production asset sync implemented
 const BUILD_VERSION = "v8.0.0-AUTO-SYNC";
@@ -99,8 +104,11 @@ app.use(session({
 // Servir arquivos estáticos da pasta uploads
 app.use('/uploads', express.static('public/uploads'));
 
-// Servir arquivos estáticos da pasta public (downloads, etc.)
-app.use(express.static('server/public'));
+// Servir arquivos estáticos da pasta public (downloads, etc.) - apenas em produção
+// Em desenvolvimento, o Vite serve tudo
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('server/public'));
+}
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -170,8 +178,8 @@ app.use((req, res, next) => {
   } else {
     // Sync build assets from dist/public to server/public before serving
     log('Syncing build assets to server/public...');
-    const distPath = path.resolve(import.meta.dirname, '..', 'dist', 'public');
-    const serverPublicPath = path.resolve(import.meta.dirname, 'public');
+    const distPath = path.resolve(__dirname, '..', 'dist', 'public');
+    const serverPublicPath = path.resolve(__dirname, 'public');
     
     try {
       // Check if dist/public exists
@@ -213,11 +221,7 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || '5000', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
+  server.listen(port, "localhost", () => {
     log(`serving on port ${port}`);
   });
 })();

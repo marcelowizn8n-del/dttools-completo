@@ -1,8 +1,12 @@
-import { Fragment, type ComponentType } from "react";
-import { Users, Target, Lightbulb, TestTube, CheckCircle2 } from "lucide-react";
+import { Fragment, type ComponentType, useRef, useState } from "react";
+import { Users, Target, Lightbulb, TestTube, CheckCircle2, FileImage, FileText, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 interface DoubleDiamondProps {
   currentPhase?: number;
@@ -82,19 +86,132 @@ function getStageStatus(currentPhase: number, stagePhases: number[]): StageStatu
 
 export function DoubleDiamond({ currentPhase = 1 }: DoubleDiamondProps) {
   const { t } = useLanguage();
+  const { toast } = useToast();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isExporting, setIsExporting] = useState(false);
+  
   const stageStatuses = stageConfig.map((stage) =>
     getStageStatus(currentPhase, stage.phases)
   );
 
+  const handleExportPNG = async () => {
+    if (!containerRef.current) return;
+    
+    setIsExporting(true);
+    try {
+      const canvas = await html2canvas(containerRef.current, {
+        backgroundColor: "#ffffff",
+        scale: 2,
+        logging: false,
+      });
+      
+      const url = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `double-diamond-fase-${currentPhase}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast({
+        title: t("doubleDiamond.export.success"),
+        description: t("doubleDiamond.export.png.success"),
+      });
+    } catch (error) {
+      console.error("Error exporting PNG:", error);
+      toast({
+        title: t("doubleDiamond.export.error"),
+        description: t("doubleDiamond.export.png.error"),
+        variant: "destructive",
+      });
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const handleExportPDF = async () => {
+    if (!containerRef.current) return;
+    
+    setIsExporting(true);
+    try {
+      const canvas = await html2canvas(containerRef.current, {
+        backgroundColor: "#ffffff",
+        scale: 2,
+        logging: false,
+      });
+      
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({
+        orientation: "landscape",
+        unit: "mm",
+        format: "a4",
+      });
+      
+      const imgWidth = 297; // A4 width in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+      pdf.save(`double-diamond-fase-${currentPhase}.pdf`);
+      
+      toast({
+        title: t("doubleDiamond.export.success"),
+        description: t("doubleDiamond.export.pdf.success"),
+      });
+    } catch (error) {
+      console.error("Error exporting PDF:", error);
+      toast({
+        title: t("doubleDiamond.export.error"),
+        description: t("doubleDiamond.export.pdf.error"),
+        variant: "destructive",
+      });
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
   return (
-    <div className="rounded-3xl border border-blue-100 bg-white shadow-lg">
+    <div ref={containerRef} className="rounded-3xl border border-blue-100 bg-white shadow-lg">
       <div className="border-b border-blue-50 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 px-6 py-6">
-        <h2 className="text-2xl font-bold text-gray-900">
-          {t("doubleDiamond.title")}
-        </h2>
-        <p className="mt-2 text-sm text-gray-600 max-w-3xl">
-          {t("doubleDiamond.subtitle")}
-        </p>
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1">
+            <h2 className="text-2xl font-bold text-gray-900">
+              {t("doubleDiamond.title")}
+            </h2>
+            <p className="mt-2 text-sm text-gray-600 max-w-3xl">
+              {t("doubleDiamond.subtitle")}
+            </p>
+          </div>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleExportPNG}
+              disabled={isExporting}
+              className="gap-2"
+            >
+              {isExporting ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <FileImage className="h-4 w-4" />
+              )}
+              {t("doubleDiamond.export.png")}
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleExportPDF}
+              disabled={isExporting}
+              className="gap-2"
+            >
+              {isExporting ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <FileText className="h-4 w-4" />
+              )}
+              {t("doubleDiamond.export.pdf")}
+            </Button>
+          </div>
+        </div>
       </div>
 
       <div className="hidden md:flex items-center gap-6 px-10 py-10">

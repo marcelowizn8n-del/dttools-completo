@@ -87,6 +87,14 @@ const translations = {
     "doubleDiamond.deliver.title": "Entregar",
     "doubleDiamond.deliver.description": "Teste, valide e evolua a melhor solução para o usuário.",
     "doubleDiamond.deliver.phases": "Fase 5 • Testar",
+    "doubleDiamond.export.png": "Exportar PNG",
+    "doubleDiamond.export.pdf": "Exportar PDF",
+    "doubleDiamond.export.success": "Exportação concluída",
+    "doubleDiamond.export.error": "Erro na exportação",
+    "doubleDiamond.export.png.success": "A imagem PNG foi baixada com sucesso.",
+    "doubleDiamond.export.png.error": "Não foi possível exportar a imagem. Tente novamente.",
+    "doubleDiamond.export.pdf.success": "O arquivo PDF foi baixado com sucesso.",
+    "doubleDiamond.export.pdf.error": "Não foi possível exportar o PDF. Tente novamente.",
     
     // Phases
     "phases.empathize": "Empatizar",
@@ -278,6 +286,14 @@ const translations = {
     "doubleDiamond.deliver.title": "Deliver",
     "doubleDiamond.deliver.description": "Test, validate and evolve the best solution for users.",
     "doubleDiamond.deliver.phases": "Phase 5 • Test",
+    "doubleDiamond.export.png": "Export PNG",
+    "doubleDiamond.export.pdf": "Export PDF",
+    "doubleDiamond.export.success": "Export completed",
+    "doubleDiamond.export.error": "Export error",
+    "doubleDiamond.export.png.success": "PNG image downloaded successfully.",
+    "doubleDiamond.export.png.error": "Could not export image. Please try again.",
+    "doubleDiamond.export.pdf.success": "PDF file downloaded successfully.",
+    "doubleDiamond.export.pdf.error": "Could not export PDF. Please try again.",
  
     // Phases
     "phases.empathize": "Empathize",
@@ -451,6 +467,14 @@ const translations = {
     "doubleDiamond.deliver.title": "Entregar",
     "doubleDiamond.deliver.description": "Probar, validar y evolucionar la mejor solución para los usuarios.",
     "doubleDiamond.deliver.phases": "Fase 5 • Probar",
+    "doubleDiamond.export.png": "Exportar PNG",
+    "doubleDiamond.export.pdf": "Exportar PDF",
+    "doubleDiamond.export.success": "Exportación completada",
+    "doubleDiamond.export.error": "Error en la exportación",
+    "doubleDiamond.export.png.success": "La imagen PNG se descargó correctamente.",
+    "doubleDiamond.export.png.error": "No se pudo exportar la imagen. Inténtalo de nuevo.",
+    "doubleDiamond.export.pdf.success": "El archivo PDF se descargó correctamente.",
+    "doubleDiamond.export.pdf.error": "No se pudo exportar el PDF. Inténtalo de nuevo.",
  
     // Pricing Page
     "pricing.title": "Elige el Plan Perfecto para Ti",
@@ -578,6 +602,14 @@ const translations = {
     "doubleDiamond.deliver.title": "Livrer",
     "doubleDiamond.deliver.description": "Tester, valider et faire évoluer la meilleure solution pour les utilisateurs.",
     "doubleDiamond.deliver.phases": "Phase 5 • Tester",
+    "doubleDiamond.export.png": "Exporter PNG",
+    "doubleDiamond.export.pdf": "Exporter PDF",
+    "doubleDiamond.export.success": "Exportation terminée",
+    "doubleDiamond.export.error": "Erreur d'exportation",
+    "doubleDiamond.export.png.success": "L'image PNG a été téléchargée avec succès.",
+    "doubleDiamond.export.png.error": "Impossible d'exporter l'image. Veuillez réessayer.",
+    "doubleDiamond.export.pdf.success": "Le fichier PDF a été téléchargé avec succès.",
+    "doubleDiamond.export.pdf.error": "Impossible d'exporter le PDF. Veuillez réessayer.",
  
     // Pricing Page
     "pricing.title": "Choisissez le Plan Parfait pour Vous",

@@ -43,8 +43,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
           // Verify response is JSON before parsing
           const contentType = response.headers.get("content-type");
           if (!contentType || !contentType.includes("application/json")) {
-            console.warn("Auth check received non-JSON response, treating as unauthenticated");
-            throw new Error("Non-JSON response from server");
+            // Non-JSON response, treat as unauthenticated
+            localStorage.removeItem("auth_user");
+            setState({
+              user: null,
+              isAuthenticated: false,
+              isLoading: false,
+            });
+            return;
           }
           
           const { user } = await response.json();
@@ -55,8 +61,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
             isAuthenticated: true,
             isLoading: false,
           });
+        } else if (response.status === 401) {
+          // 401 is expected when not authenticated - silently handle it
+          localStorage.removeItem("auth_user");
+          setState({
+            user: null,
+            isAuthenticated: false,
+            isLoading: false,
+          });
         } else {
-          // Server session invalid, clear localStorage
+          // Other error statuses - clear localStorage
           localStorage.removeItem("auth_user");
           setState({
             user: null,
@@ -65,7 +79,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
           });
         }
       } catch (error) {
-        console.error("Auth check failed:", error);
+        // Network errors or other exceptions - silently handle
+        // Only log if it's not a network error (which is common in dev)
+        if (error instanceof TypeError && error.message.includes('fetch')) {
+          // Network error - silently handle
+        } else {
+          console.warn("Auth check failed:", error);
+        }
         // On error, clear localStorage and set unauthenticated
         localStorage.removeItem("auth_user");
         setState({

@@ -315,7 +315,7 @@ export default function ProjectDetailPage() {
         </Card>
       </div>
 
-      <DoubleDiamond currentPhase={project.currentPhase} />
+      <DoubleDiamond currentPhase={project.currentPhase ?? 1} />
 
       {/* Main Content with Tabs */}
       <Tabs defaultValue="phases" className="space-y-6">

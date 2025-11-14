@@ -45,14 +45,15 @@ import { designThinkingAI, type ChatMessage, type DesignThinkingContext } from "
 import { designThinkingGeminiAI } from "./geminiService";
 import { PPTXService } from "./pptxService";
 
-// Initialize Stripe with secret key - validate environment variable
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('STRIPE_SECRET_KEY environment variable is required');
+// Initialize Stripe with secret key - optional in development
+let stripe: Stripe | null = null;
+if (process.env.STRIPE_SECRET_KEY) {
+  stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: "2024-11-20.acacia",
+  });
+} else if (process.env.NODE_ENV === 'production') {
+  throw new Error('STRIPE_SECRET_KEY environment variable is required in production');
 }
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2025-08-27.basil",
-});
 
 // Extend Request interface to include session user
 declare module 'express-serve-static-core' {
@@ -1031,6 +1032,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Check current session/user
   app.get("/api/auth/me", async (req, res) => {
+    // Return 401 silently - this is expected when user is not authenticated
     try {
       if (!req.session?.userId || !req.session?.user) {
         return res.status(401).json({ error: "Not authenticated" });
@@ -1317,6 +1319,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Create or get Stripe customer
+      if (!stripe) {
+        return res.status(503).json({ error: "Stripe is not configured. Please set STRIPE_SECRET_KEY." });
+      }
+      
       let stripeCustomerId = user.stripeCustomerId;
       if (!stripeCustomerId) {
         const customer = await stripe.customers.create({
@@ -1372,6 +1378,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Stripe webhook to handle subscription events
   app.post("/api/stripe-webhook", async (req, res) => {
+    if (!stripe) {
+      return res.status(503).json({ error: "Stripe is not configured." });
+    }
+    
     const sig = req.headers["stripe-signature"];
     let event;
 
@@ -1411,6 +1421,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
         case "customer.subscription.updated":
         case "customer.subscription.deleted":
+          if (!stripe) break;
           const subscription = event.data.object as Stripe.Subscription;
           const customer = await stripe.customers.retrieve(subscription.customer as string) as Stripe.Customer;
           
@@ -1451,6 +1462,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       if (!req.user?.id) {
         return res.status(401).json({ error: "User not authenticated" });
+      }
+
+      if (!stripe) {
+        return res.status(503).json({ error: "Stripe is not configured. Please set STRIPE_SECRET_KEY." });
       }
 
       const user = await storage.getUser(req.user.id);

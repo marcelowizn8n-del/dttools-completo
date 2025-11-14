@@ -321,5 +321,63 @@ export type InsertUser = z.infer<typeof insertUserSchema>;
 export type Article = typeof articles.$inferSelect;
 export type InsertArticle = z.infer<typeof insertArticleSchema>;
 
+// Subscription Plans
+export const subscriptionPlans = sqliteTable("subscription_plans", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  name: text("name").notNull().unique(),
+  displayName: text("display_name").notNull(),
+  description: text("description"),
+  priceMonthly: integer("price_monthly").default(0),
+  priceYearly: integer("price_yearly").default(0),
+  features: text("features", { mode: 'json' }).$type<string[]>().default([]),
+  maxProjects: integer("max_projects"),
+  maxPersonasPerProject: integer("max_personas_per_project"),
+  maxUsersPerTeam: integer("max_users_per_team"),
+  aiChatLimit: integer("ai_chat_limit"),
+  libraryArticlesCount: integer("library_articles_count"),
+  hasCollaboration: integer("has_collaboration", { mode: 'boolean' }).default(false),
+  exportFormats: text("export_formats", { mode: 'json' }).$type<string[]>().default([]),
+  hasPermissionManagement: integer("has_permission_management", { mode: 'boolean' }).default(false),
+  hasSharedWorkspace: integer("has_shared_workspace", { mode: 'boolean' }).default(false),
+  hasCommentsAndFeedback: integer("has_comments_and_feedback", { mode: 'boolean' }).default(false),
+  isActive: integer("is_active", { mode: 'boolean' }).default(true),
+  createdAt: integer("created_at", { mode: 'timestamp' }).$defaultFn(() => new Date()),
+  updatedAt: integer("updated_at", { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
+export const insertSubscriptionPlanSchema = createInsertSchema(subscriptionPlans).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type SubscriptionPlan = typeof subscriptionPlans.$inferSelect;
+export type InsertSubscriptionPlan = z.infer<typeof insertSubscriptionPlanSchema>;
+
+// User Subscriptions
+export const userSubscriptions = sqliteTable("user_subscriptions", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  userId: text("user_id").notNull().references(() => users.id),
+  planId: text("plan_id").notNull().references(() => subscriptionPlans.id),
+  stripeSubscriptionId: text("stripe_subscription_id"),
+  status: text("status").notNull(),
+  billingPeriod: text("billing_period").notNull(),
+  currentPeriodStart: integer("current_period_start", { mode: 'timestamp' }),
+  currentPeriodEnd: integer("current_period_end", { mode: 'timestamp' }),
+  cancelAtPeriodEnd: integer("cancel_at_period_end", { mode: 'boolean' }).default(false),
+  createdAt: integer("created_at", { mode: 'timestamp' }).$defaultFn(() => new Date()),
+  updatedAt: integer("updated_at", { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
+export const insertUserSubscriptionSchema = createInsertSchema(userSubscriptions).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export type UserSubscription = typeof userSubscriptions.$inferSelect;
+export type InsertUserSubscription = z.infer<typeof insertUserSubscriptionSchema>;
+
+
 
 

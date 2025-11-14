@@ -10,28 +10,15 @@ import {
   type Prototype, type InsertPrototype,
   type TestPlan, type InsertTestPlan,
   type TestResult, type InsertTestResult,
-  type UserProgress, type InsertUserProgress,
   type User, type InsertUser,
   type Article, type InsertArticle,
-  type SubscriptionPlan, type InsertSubscriptionPlan,
-  type UserSubscription, type InsertUserSubscription,
-  type CanvasDrawing, type InsertCanvasDrawing,
-  type PhaseCard, type InsertPhaseCard,
-  type Benchmark, type InsertBenchmark,
-  type BenchmarkAssessment, type InsertBenchmarkAssessment,
-  type DvfAssessment, type InsertDvfAssessment,
-  type LovabilityMetric, type InsertLovabilityMetric,
-  type ProjectAnalytics, type InsertProjectAnalytics,
-  type CompetitiveAnalysis, type InsertCompetitiveAnalysis,
-  type ProjectBackup, type InsertProjectBackup,
-  type HelpArticle, type InsertHelpArticle,
   projects, empathyMaps, personas, interviews, observations,
   povStatements, hmwQuestions, ideas, prototypes, testPlans, testResults,
-  userProgress, users, articles, subscriptionPlans, userSubscriptions,
-  canvasDrawings, phaseCards, benchmarks, benchmarkAssessments,
-  dvfAssessments, lovabilityMetrics, projectAnalytics, competitiveAnalysis,
-  projectBackups, helpArticles
-} from "@shared/schema";
+  users, articles,
+  type SubscriptionPlan, type InsertSubscriptionPlan,
+  type UserSubscription, type InsertUserSubscription,
+  subscriptionPlans, userSubscriptions
+} from "@shared/schema-sqlite";
 import { randomUUID } from "crypto";
 import bcrypt from "bcrypt";
 import { db } from "./db";

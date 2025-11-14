@@ -27,17 +27,9 @@ import { useAuth, ProtectedRoute } from "@/contexts/AuthContext";
 import DashboardPage from "@/pages/dashboard";
 
 function HomePage() {
-  const { isAuthenticated, isLoading } = useAuth();
-  
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full"></div>
-      </div>
-    );
-  }
-  
-  return isAuthenticated ? <DashboardPage /> : <LandingPage />;
+  // Always show landing page on root path
+  // Dashboard is accessible via /dashboard route
+  return <LandingPage />;
 }
 
 function ProjectsRoute() {
